@@ -13,7 +13,7 @@ func modifyEmployee(emp *EmpStruct) {
 	
 }
 
-func main() {
+func updatingStructs() {
 	empOne := new(EmpStruct)
 	empOne.name = "Meha"
 	empOne.company = "GL"
