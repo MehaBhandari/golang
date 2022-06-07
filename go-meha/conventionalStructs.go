@@ -2,20 +2,20 @@ package main
 
 import "fmt"
 
-// One Type
+// Type One
 type EmployeeStruct struct {
 	empName string
 	empAge byte
 	empDesignation string
 }
 
-// Other Type
+// Type Two
 type EmployeeData struct {
 	empBloodGroup string
 	empSalaryBand byte
 }
 
-func main() {
+func conventionalStructs() {
 	employeeOne := EmployeeStruct {
 		empName: "Meha",
 		empAge: 30,
