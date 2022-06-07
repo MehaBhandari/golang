@@ -15,7 +15,7 @@ type EmployeeDetails struct {
 	address EmployeeAddress
 }
 
-func main() {
+func structWithinStruct() {
 	employeeOne := new(EmployeeDetails)
 	employeeOne.name = "Meha"
 	employeeOne.isMarried = true
