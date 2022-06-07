@@ -22,7 +22,7 @@ type empObj struct {
     emailAddress string `json:"emailAddress`
 }
 
-func main() {
+func readJson() {
 	file, _ := ioutil.ReadFile("employee-details.json")
 	data := empJsonData{}
 	_ = json.Unmarshal([]byte(file), &data)
