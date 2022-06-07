@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func arrayOfStructs() {
 	nameArray := [4]string {"A", "B", "C", "D"}
 	ageArray := [4]byte {22, 25, 35, 45}
 	bonusArray := [4]byte {10, 20, 30, 40}
