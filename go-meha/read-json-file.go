@@ -1,39 +1,43 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"io/ioutil"
 	"encoding/json"
 )
 
-type empJsonData struct {
-	empJsonData [] empObj `json: "emp_obj"`
+type EmpObj struct {
+	userId string 
+    jobTitleName string 
+    firstName string 
+    lastName string 
+    preferredFullName string 
+    employeeCode string 
+    region string 
+    phoneNumber string 
+    emailAddress string 
 }
 
-type empObj struct {
-	userId string `json:"userId"`
-    jobTitleName string `json:"jobTitleName"`
-    firstName string `json:"firstName"`
-    lastName string `json:"lastName"`
-    preferredFullName string `json:"preferredFullName"`
-    employeeCode string `json:"employeeCode"`
-    region string `json:"region"`
-    phoneNumber string `json:"phoneNumber`
-    emailAddress string `json:"emailAddress`
-}
-
-func main() {
-	file, _ := ioutil.ReadFile("employee-details.json")
-	data := empJsonData{}
-	_ = json.Unmarshal([]byte(file), &data)
-	for i:=0; i < len(data.empJsonData); i++ {
-		fmt.Println("User Id: ", data.empJsonData[i].userId)
-		fmt.Println("Job Title: ", data.empJsonData[i].jobTitleName)
-		fmt.Println("First Name: ", data.empJsonData[i].firstName)
-		fmt.Println("Full Name: ", data.empJsonData[i].preferredFullName)
-		fmt.Println("Employee Code: ", data.empJsonData[i].employeeCode)
-		fmt.Println("Region: ", data.empJsonData[i].region)
-		fmt.Println("Phone Number: ", data.empJsonData[i].phoneNumber)
-		fmt.Println("Email Address: ", data.empJsonData[i].emailAddress)		
-	}
+func readJsonFile() {
+	file, err := ioutil.ReadFile("./employee-details.json")
+	if err != nil {
+        log.Fatal("Error when opening file: ", err)
+    }
+	var payload []EmpObj
+	err = json.Unmarshal(file, &payload)
+	if err != nil {
+        log.Fatal("Error during Unmarshal(): ", err)
+    }
+	log.Println("File is: ", string(file))
+	log.Printf("origin: %s\n", payload)
+	// for i:=0; i < len(data.empJsonData); i++ {
+	// 	log.Println("User Id: ", payload.empJsonData[i].userId)
+	// 	log.Println("Job Title: ", payload.empJsonData[i].jobTitleName)
+	// 	log.Println("First Name: ", payload.empJsonData[i].firstName)
+	// 	log.Println("Full Name: ", payload.empJsonData[i].preferredFullName)
+	// 	log.Println("Employee Code: ", payload.empJsonData[i].employeeCode)
+	// 	log.Println("Region: ", payload.empJsonData[i].region)
+	// 	log.Println("Phone Number: ", payload.empJsonData[i].phoneNumber)
+	// 	log.Println("Email Address: ", payload.empJsonData[i].emailAddress)		
+	// }
 }
