@@ -16,7 +16,7 @@ type response2 struct {
     Fruits []string `json:"fruits"`
 }
 
-func main() {
+func marshalData() {
 
     bolB, _ := json.Marshal(true)
     fmt.Println(string(bolB))
