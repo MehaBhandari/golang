@@ -13,7 +13,7 @@ func (temp TemplateStruct) ShowDetails() string{
 	return "Name is " + temp.Name
 }
 
-func main() {
+func basicTemplate() {
 	newTemplate := TemplateStruct{"Meha", 30}
 
 	fmt.Println("User name is: ", newTemplate.Name)
