@@ -34,7 +34,7 @@ type Social1 struct {
     Youtube  string   `xml:"youtube"`
 }
 
-func main() {
+func parseXMLFile() {
 
     // Open our xmlFile
     xmlFile, err := os.Open("users.xml")
