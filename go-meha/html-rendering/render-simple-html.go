@@ -7,11 +7,20 @@ import (
 	"text/template"
 )
 
-func main() {
-	http.HandleFunc("/", ShowHtmlTemplate)
-	http.HandleFunc("/about-Techno-Funnel", AboutTechnofunnel)
+type CheckPageStruct struct {
+	isLookupPage bool
+}
+
+func HandleScripts() {
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/scripts/", http.StripPrefix("/scripts/", http.FileServer(http.Dir("appScripts"))))
+}
+
+func renderSimpleHTML() {
+	CheckPage = CheckPageStruct{isLookupPage: false}
+	http.HandleFunc("/", ShowHtmlTemplate)
+	http.HandleFunc("/about-Techno-Funnel", AboutTechnofunnel)
+	HandleScripts()
 	http.ListenAndServe(":8000", nil)
 }
 
@@ -25,7 +34,7 @@ func ShowHtmlTemplate(response http.ResponseWriter, request *http.Request) {
 	*/
 	fmt.Println(filePath)
 	applicationTemplate, _ := template.ParseFiles(filePath)
-	applicationTemplate.Execute(response, nil)
+	applicationTemplate.Execute(response, CheckPage)
 }
 
 
@@ -33,5 +42,5 @@ func AboutTechnofunnel(response http.ResponseWriter, request *http.Request) {
 	filepath := path.Join("html-pages", "about.html")
 	fmt.Println(filepath)
 	applicationTemplate, _ :=template.ParseFiles(filepath)
-	applicationTemplate.Execute(response, nil)
+	applicationTemplate.Execute(response, CheckPage)
 }

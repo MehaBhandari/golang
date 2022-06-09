@@ -9,7 +9,11 @@
     <body>
         <h1>This is Golang Rendered Output</h1>
         <h2>Welcome to Template Tutorial</h2>
-        <a href="about-Techno-Funnel"> Go To About Page </a>
+        {{ if .CheckPage}}
+            <a href="/welcome-page"> Go To Welcome Page </a>            
+        {{else}}
+            <a href="about-Techno-Funnel"> Go To About Page </a>
+        {{end}}       
         <script src="scripts/index.js"></script>
     </body>
 </html>
