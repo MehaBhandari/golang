@@ -11,7 +11,7 @@ type Employee struct {
 	Age byte
 }
 
-func main() {
+func createServer() {
 	http.HandleFunc("/", PrintSimpleString)
 	http.HandleFunc("/showJsonData", PrintSimpleJson)
 	http.ListenAndServe(":4000", nil)
